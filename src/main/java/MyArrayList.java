@@ -17,19 +17,21 @@ public class MyArrayList<T> implements IList<T>{
     public void add(int index, T t) {
         if (index >= 0 && index < size) {
             Object[] tempArray = new Object[size + 1];
-            for (int i = 0; i < index; i++) {
-                tempArray[i] = array[i];
+            int i = 0;
+
+            for (int j = 0; j < tempArray.length; j++) {
+                if (j == index) {
+                    tempArray[j] = t;
+                } else {
+                    tempArray[j] = array[i];
+                    i++;
+                }
             }
-            tempArray[index] = t;
-            for (int i = index; i < size; i++) {
-                tempArray[i + 1] = array[i];
-            }
+
             array = tempArray;
             size++;
 
-            if (size >= array.length) {
-                grow();
-            }
+            if (size >= array.length) { grow(); }
         }
     }
 
