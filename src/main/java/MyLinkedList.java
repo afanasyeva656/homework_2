@@ -68,6 +68,7 @@ public class MyLinkedList<T> implements IList{
             first = first.next;
         } else {
             Node nodeForDelete = findNodeByIndex(index);
+            if (nodeForDelete == null) { throw  new IndexOutOfBoundsException();}
             Node nodeBefore = nodeForDelete.prev;
             Node nodeAfter = nodeForDelete.next;
 
